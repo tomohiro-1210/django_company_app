@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate ,login #ログイン機能
 
 
 # Create your views here.
+
+# サインアップ
 def signupfunc(request):
     if request.method == "POST":
         username = request.POST['name']
@@ -19,6 +21,7 @@ def signupfunc(request):
     # return render(request, 'signup.html', {})# {}はモデルまたは任意で出したデータ
     return redirect('login')
 
+# ログイン
 def loginfunc(request):
     if request.method == "POST":
         username = request.POST['name']
@@ -26,10 +29,12 @@ def loginfunc(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
              login(request, user)
-             return render(request, 'login.html', {'context': 'ログイン済み'})# {}はモデルまたは任意で出したデータ
+             return render(request, 'login.html', {'context': 'ログイン済み'})
         else:
-            return render(request, 'login.html', {'context': 'ログインしていません'})# {}はモデルまたは任意で出したデータ
+            return render(request, 'login.html', {'context': 'ログインしていません'})
     
-    return render(request, 'login.html', {'context': 'get method'})# {}はモデルまたは任意で出したデータ
+    return render(request, 'login.html', {'context': 'get method'})
             
-    
+# 投稿一覧
+def listfunc(request):
+    return render(request, 'list.html', {})
