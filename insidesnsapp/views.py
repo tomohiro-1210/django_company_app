@@ -53,3 +53,9 @@ def listfunc(request):
 def detailfunc(request, pk):
     object = get_object_or_404(snsModel, pk=pk)
     return render(request, 'detail.html', {'object':object})
+
+def likefunc(request, pk):
+    object = snsModel.objects.get(pk=pk) #投稿データを引っ張り出す
+    object.good = object.good + 1 #いいねが足される
+    object.save() #いいねが保存される
+    return redirect('list')

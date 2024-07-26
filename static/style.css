@@ -9,10 +9,9 @@
 }
 
 @media screen and (max-width:px) {
-    
-.link-btns .prev,
-.link-btns .next{
-    height: 36px;
-    line-height: 36px;
-}
+    .link-btns .prev,
+    .link-btns .next{
+        height: 36px;
+        line-height: 36px;
+    }
 }

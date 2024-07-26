@@ -33,12 +33,12 @@
        <h2 class="title-font md:text-3xl text-2xl mb-4 md:mb-6 font-medium text-gray-900">タイトル：{{ object.title }}</h2>
        <p class="mb-8 md:mb-10 text-base md:text-xl leading-relaxed text-left w-md md:w-2/3 mx-auto">{{ object.content }}</p>
        <div class="flex justify-center mx-auto mb-4">
-         <a href="#" class="inline-block mr-6 bg-pink-500 hover:bg-pink-400 text-white text-sm py-2 px-4 rounded">いいね！</a>
-         <button class="inline-block bg-indigo-500 text-white text-sm py-2 px-4 rounded">見ました！</button>
+         <a href="{% url 'like' object.pk %}" class="inline-block mr-6 bg-pink-500 hover:bg-pink-400 text-white text-sm py-2 px-4 rounded">いいね！</a>
+         <a href="{% url 'like' object.pk %}" class="inline-block bg-indigo-500 text-white text-sm py-2 px-4 rounded">見ました！</a>
        </div>
        <div class="flex justify-center align-center mx-auto link-btns">
          <a href="#" class="block text-sm md:text-base text-blue-600 text-left text-base mr-8 prev">＜　前の投稿</a>
-         <a href="#" class="block text-sm md:text-base py-2 px-4 bg-green-600 hover:text-green-500 text-white text-center text-base mr-8 rounded">投稿一覧に戻る</a>
+         <a href="{% url 'list' %}" class="block text-sm md:text-base py-2 px-4 bg-green-600 hover:text-green-500 text-white text-center text-base mr-8 rounded">投稿一覧に戻る</a>
          <a href="#" class="block text-sm md:text-base text-blue-600 text-left text-base next">次の投稿　＞</a>
        </div>
      </div>
