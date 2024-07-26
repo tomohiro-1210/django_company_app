@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User #ユーザーモデルの読み込み
 from django.db import IntegrityError #重複したときのエラー
 from django.contrib.auth import authenticate ,login ,logout #ログイン機能
@@ -47,3 +47,9 @@ def logoutfunc(request):
 def listfunc(request):
     object_list = snsModel.objects.all()
     return render(request, 'list.html', {'object_list':object_list})
+
+@login_required
+#投稿詳細
+def detailfunc(request, pk):
+    object = get_object_or_404(snsModel, pk=pk)
+    return render(request, 'detail.html', {'object':object})

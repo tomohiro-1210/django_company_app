@@ -13,8 +13,7 @@
        <h1 class="font-bold text-white text-2xl md:text-4xl text-center md:text-left w-auto mb-4 md:mb-0">SNS</h1>
        <nav>
            <ul class="flex justify-center md:justify-between">
-               <li class="ml-4 text-white hover:text-blue-500 font-semibold text-sm md:text-base"><a href="#">メニュー1</a></li>
-               <li class="ml-4 text-white hover:text-blue-500 font-semibold text-sm md:text-base"><a href="#">メニュー2</a></li>
+               <li class="ml-4 text-white hover:text-blue-500 font-semibold text-sm md:text-base"><a href="{% url 'list' %}">みんなの投稿</a></li>
                <li class="ml-4 text-white hover:text-blue-500 font-semibold text-sm md:text-base"><a href="{% url 'logout' %}">ログアウト</a></li>
            </ul>
        </nav>
@@ -37,7 +36,7 @@
                       <a href="#" class="inline-block mr-2 bg-pink-500 hover:bg-pink-400 text-white text-sm py-2 px-4 rounded">いいね：３</a>
                       <a href="#" class="inline-block mr-2 bg-indigo-500 hover:bg-indigo-400 text-white text-sm py-2 px-4 rounded">閲覧数：３</a>
                     </div>
-                      <a href="#" class="inline-block mr-2 bg-green-500 hover:bg-green-400 text-white text-sm py-2 px-4 rounded">詳細を見る ＞</a>
+                      <a href="{% url 'detail' item.pk %}" class="inline-block mr-2 bg-green-500 hover:bg-green-400 text-white text-sm py-2 px-4 rounded">詳細を見る ＞</a>
                   </div>
               </div>
           </div>

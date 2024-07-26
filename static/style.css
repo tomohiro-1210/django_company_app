@@ -1,3 +1,18 @@
 .sns_posts{
     box-shadow: 1px 1px 4px gray;
 }
+
+.link-btns .prev,
+.link-btns .next{
+    height: 40px;
+    line-height: 40px;
+}
+
+@media screen and (max-width:px) {
+    
+.link-btns .prev,
+.link-btns .next{
+    height: 36px;
+    line-height: 36px;
+}
+}
