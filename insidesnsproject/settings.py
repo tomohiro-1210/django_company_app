@@ -118,9 +118,19 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+#メディアの格納先設定
 MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = 'medi/'
+
+#CSSフォルダなどの静的ファイルの格納先設定
+STATIC_URL = '/static/'
+
+# デプロイ時に静的ファイルを収集するための設定
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    str(BASE_DIR / "static"),  # プロジェクトの静的ファイルのパス
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
