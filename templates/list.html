@@ -23,6 +23,7 @@
 {% endblock header %}
 
 {% block content %} 
+{% if user.is_authenticated %}
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 w-full md:w-3/4 mx-auto">
       <div class="flex flex-wrap -m-4">
@@ -42,6 +43,9 @@
           </div>
           {% endfor %}
       </div>
+{% else %}
+<h3 class=" text-red-500 2xl font-bold py-4">ログインしてください</h3>
+{% endif %}
   </div>
   </section>
 

@@ -132,6 +132,9 @@ STATICFILES_DIRS = [
     str(BASE_DIR / "static"),  # プロジェクトの静的ファイルのパス
 ]
 
+#ログインページの設定
+LOGIN_URL = 'login'  # ログインページのURLを指定
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User #ユーザーモデルの読み込�
 from django.db import IntegrityError #重複したときのエラー
 from django.contrib.auth import authenticate ,login #ログイン機能
 from .models import snsModel #モデルの読み込み
+from django.contrib.auth.decorators import login_required #ログイン必須の読み込み
 
 
 # Create your views here.
@@ -30,12 +31,14 @@ def loginfunc(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
              login(request, user)
-             return render(request, 'login.html', {'context': 'ログイン済み'})
+             return redirect('list')
         else:
-            return render(request, 'login.html', {'context': 'ログインしていません'})
+            return render(request, 'login.html', {})
     
-    return render(request, 'login.html', {'context': 'get method'})
-            
+    return render(request, 'login.html', {})
+
+
+@login_required #ログイン必須
 # 投稿一覧
 def listfunc(request):
     object_list = snsModel.objects.all()
