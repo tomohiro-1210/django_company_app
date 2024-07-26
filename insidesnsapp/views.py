@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User #ユーザーモデルの読み込み
 from django.db import IntegrityError #重複したときのエラー
 from django.contrib.auth import authenticate ,login #ログイン機能
+from .models import snsModel #モデルの読み込み
 
 
 # Create your views here.
@@ -37,4 +38,7 @@ def loginfunc(request):
             
 # 投稿一覧
 def listfunc(request):
-    return render(request, 'list.html', {})
+    object_list = snsModel.objects.all()
+    return render(request, 'list.html', {'object_list':object_list})
+
+#
