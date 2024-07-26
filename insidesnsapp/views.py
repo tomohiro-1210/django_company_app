@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User #ユーザーモデルの読み込み
 from django.db import IntegrityError #重複したときのエラー
-from django.contrib.auth import authenticate ,login #ログイン機能
+from django.contrib.auth import authenticate ,login ,logout #ログイン機能
 from .models import snsModel #モデルの読み込み
 from django.contrib.auth.decorators import login_required #ログイン必須の読み込み
 
@@ -37,11 +37,13 @@ def loginfunc(request):
     
     return render(request, 'login.html', {})
 
+#ログアウト
+def logoutfunc(request):
+    logout(request)
+    return redirect('login')
 
 @login_required #ログイン必須
 # 投稿一覧
 def listfunc(request):
     object_list = snsModel.objects.all()
     return render(request, 'list.html', {'object_list':object_list})
-
-#
