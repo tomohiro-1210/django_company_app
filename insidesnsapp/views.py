@@ -20,8 +20,8 @@ def signupfunc(request):
             return render(request, 'signup.html', {'error': 'このユーザーは既に登録されています。'})# {}はモデルまたは任意で出したデータ
 
 
-    # return render(request, 'signup.html', {})# {}はモデルまたは任意で出したデータ
-    return redirect('login')
+    return render(request, 'signup.html', {})# {}はモデルまたは任意で出したデータ
+    
 
 # ログイン
 def loginfunc(request):
@@ -59,3 +59,15 @@ def likefunc(request, pk):
     object.good = object.good + 1 #いいねが足される
     object.save() #いいねが保存される
     return redirect('list')
+
+def readfunc(request, pk):
+    object = snsModel.objects.get(pk=pk) #投稿データを引っ張り出す
+    #ユーザー情報を取って既読を押せるか押せないかを処理する
+    username = request.user.get_username()
+    if username in object.readtext:
+        return redirect('list')
+    else: 
+        object.read = object.read + 1 #いいねが足される
+        object.readtext = object.readtext + '  ' + username
+        object.save() #いいねが保存される
+        return redirect('list')
