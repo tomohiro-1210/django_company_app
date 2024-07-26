@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock customcss %}
+
+<body>
+{% block header %}
+<header class="w-full bg-blue-400">
+   <div class="md:flex justify-between items-center p-4 md:p-6 lg:p-8 w-full md:w-10/12 mx-auto">
+       <h1 class="font-bold text-white text-2xl md:text-4xl text-center md:text-left w-auto mb-4 md:mb-0">SNS</h1>
+       <nav>
+           <ul class="flex justify-center md:justify-between">
+               <li class="ml-4 text-white hover:text-blue-500 font-semibold text-sm md:text-base"><a href="{% url 'list' %}">みんなの投稿</a></li>
+               <li class="ml-4 text-white hover:text-blue-500 font-semibold text-sm md:text-base"><a href="{% url 'create' %}">新規投稿</a></li>
+               <li class="ml-4 text-white hover:text-blue-500 font-semibold text-sm md:text-base"><a href="{% url 'logout' %}">ログアウト</a></li>
+           </ul>
+       </nav>
+   </div>
+</header>
+{% endblock header %}
+
+
+{% block content %} 
+<form enctype="multipart/form-data" method="POST" class="w-full md:w-3/4 lg:w-1/2 mx-auto px-5 py-8 md:py-12 lg:py-16">
+  {% csrf_token %}
+  
+  
+  <div class="w-full px-4 md:px-8 pb-8">
+      <label for="title" class="block text-sm md:text-base mb-4 text-gray-600">タイトル</label>
+      <input type="text" name="title" class="block w-full border-2 border-gray-400 bg-gray-100 text-gray-600 p-2 rounded">
+  </div>
+  <div class="w-full px-4 md:px-8 pb-8">
+      <label for="title" class="block text-sm md:text-base mb-4 text-gray-600">本文</label>
+      <textarea type="text" name="content" class="block w-full border-2 border-gray-400 bg-gray-100 text-gray-600 p-2 rounded h-40"></textarea>
+  </div>
+  <div class="w-full px-4 md:px-8 pb-8">
+      <label for="title" class="inline-block text-sm md:text-base mb-4 text-gray-600 mr-4">画像をアップロードする</label>
+      <input type="file" name="post_img">
+  </div>
+  <div class="w-full">
+      <input type="hidden" name="author" value="{{ user.username }}" class="block w-full border-2 border-gray-400 bg-gray-100 text-gray-600 p-2 rounded">
+  </div>
+  
+  
+  <button type="submit" class="block bg-indigo-500 text-white text-sm py-2 px-4 mx-auto rounded">投稿する</button>
+</form>
+
+{% endblock content %}
+</body>

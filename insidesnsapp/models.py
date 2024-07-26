@@ -6,7 +6,7 @@ class snsModel(models.Model):
     content = models.TextField()
     author = models.CharField(max_length=50)
     post_img = models.ImageField(upload_to='') #upload_toは保存先を指定する
-    good = models.IntegerField() #いいね
-    read = models.IntegerField() #既読
-    readtext = models.TextField() #
+    good = models.IntegerField(null=True, blank=True, default=0) #いいね
+    read = models.IntegerField(null=True, blank=True, default=0) #既読
+    readtext = models.TextField(null=True, blank=True, default='投稿者') #既読つけた人
 

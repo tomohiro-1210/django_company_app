@@ -4,9 +4,12 @@ from django.db import IntegrityError #重複したときのエラー
 from django.contrib.auth import authenticate ,login ,logout #ログイン機能
 from .models import snsModel #モデルの読み込み
 from django.contrib.auth.decorators import login_required #ログイン必須の読み込み
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
 
 
 # Create your views here.
+    
 
 # サインアップ
 def signupfunc(request):
@@ -71,3 +74,11 @@ def readfunc(request, pk):
         object.readtext = object.readtext + '  ' + username
         object.save() #いいねが保存される
         return redirect('list')
+    
+
+#投稿
+class postCreate(CreateView):
+    template_name = 'create.html'
+    model = snsModel
+    fields = ('title','content', 'author', 'post_img')
+    success_url = reverse_lazy('list')

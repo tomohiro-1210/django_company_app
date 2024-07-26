@@ -14,6 +14,7 @@
        <nav>
             <ul class="flex justify-center md:justify-between">
                 <li class="ml-4 text-white hover:text-blue-500 font-semibold text-sm md:text-base"><a href="{% url 'list' %}">みんなの投稿</a></li>
+                <li class="ml-4 text-white hover:text-blue-500 font-semibold text-sm md:text-base"><a href="{% url 'create' %}">新規投稿</a></li>
                 <li class="ml-4 text-white hover:text-blue-500 font-semibold text-sm md:text-base"><a href="{% url 'logout' %}">ログアウト</a></li>
             </ul>
        </nav>
@@ -24,14 +25,14 @@
 {% block content %} 
 {% if user.is_authenticated %}
 <section class="text-gray-600 body-font">
-   <div class="container mx-auto flex px-5 py-12 md:py-20 lg:py-24 items-center justify-center flex-col">
+   <div class="container mx-auto flex px-5 py-8 md:py-12 lg:py-16 items-center justify-center flex-col">
      <div class="w-full max-w-md md:max-w-xl mb-4 object-cover object-center rounded" >
        <img class="mx-auto w-auto block" alt="hero" src="{{ object.post_img.url }}">
      </div>
      <div class="text-center w-full md:w-2/1">
        <p class="text-base text-cetner mb-6 md:mb-8">投稿者：{{ object.author }}</p>
        <h2 class="title-font md:text-3xl text-2xl mb-4 md:mb-6 font-medium text-gray-900">タイトル：{{ object.title }}</h2>
-       <p class="mb-8 md:mb-10 text-base md:text-xl leading-relaxed text-left w-md md:w-2/3 mx-auto">{{ object.content }}</p>
+       <p class="mb-8 md:mb-10 text-base md:text-l leading-relaxed text-left w-md md:w-2/3 mx-auto">{{ object.content }}</p>
        <div class="flex justify-center mx-auto mb-4">
          <a href="{% url 'like' object.pk %}" class="inline-block mr-6 bg-pink-500 hover:bg-pink-400 text-white text-sm py-2 px-4 rounded">いいね！</a>
          <a href="{% url 'read' object.pk %}" class="inline-block bg-indigo-500 text-white text-sm py-2 px-4 rounded">見ました！</a>
